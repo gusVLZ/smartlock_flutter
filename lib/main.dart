@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:smart_locker/Activities/OpenDoor.dart';
 import 'package:smart_locker/Activities/SecondScreen.dart';
-
 import 'Utils/Notifications.dart';
-
 
 
 void main() => runApp(MyApp());
@@ -14,24 +12,36 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: DefaultTabController(
-        length: 2,
+        length: 3,
         child: Scaffold(
           appBar: AppBar(
             bottom: TabBar(
               tabs: [
                 Text('LOGIN'),
                 Text('REGISTRE-SE'),
+                Text('OpenDoor'),
               ],
             ),
             title: Text('Engenharia Arcana'),
           ),
-          body: TabBarView(
+          body: Builder(builder: (context) =>TabBarView(
             children: [
-                Text(''),
-                Text(''),
+              Text(''),
+              Text(''),
+              RaisedButton(
+                color: Colors.blue,
+                splashColor: Colors.white,
+                textColor: Colors.white,
+                onPressed: () {
+                  Navigator.push(
+                      context,MaterialPageRoute(
+                          builder: (context) => OpenDoor()));
+                },
+                child: Icon(Icons.folder_open, size: 30),
+              ),
             ],
             
-          ),
+          )),
         ),
       ),
 
