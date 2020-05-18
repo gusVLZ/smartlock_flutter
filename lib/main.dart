@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:smart_locker/Activities/OpenDoor.dart';
 import 'package:smart_locker/Activities/SecondScreen.dart';
+import 'package:smart_locker/widgets/login.dart';
+import 'package:smart_locker/widgets/registro.dart';
 import 'Utils/Notifications.dart';
 
 
@@ -26,8 +28,8 @@ class MyApp extends StatelessWidget {
           ),
           body: Builder(builder: (context) =>TabBarView(
             children: [
-              Text(''),
-              Text(''),
+              Login(),
+              Registro(),
               RaisedButton(
                 color: Colors.blue,
                 splashColor: Colors.white,

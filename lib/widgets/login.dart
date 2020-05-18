@@ -11,30 +11,30 @@ class _LoginState extends State<Login> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Padding(
-        padding: EdgeInsets.all(10),
-        child: Center(
-          child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-             TextFormField(autofocus: true,
-            keyboardType: TextInputType.text,
-            style: new TextStyle(color: Colors.black, fontSize: 20),
-            decoration: InputDecoration(
-              labelText: "Usuário",
-              labelStyle: TextStyle(color: Colors.black)),
-              Divider(),
-              TextFormField(autofocus: true,
-            keyboardType: TextInputType.text,
-            style: new TextStyle(color: Colors.black, fontSize: 20),
-            decoration: InputDecoration(
-              labelText: "Usuário",
-              labelStyle: TextStyle(color: Colors.black)),
-            )
-          ]
-        )
-      )
-    ),
-  );
- }
+          padding: EdgeInsets.all(10),
+          child: Center(
+              child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                TextFormField(
+                  autofocus: true,
+                  keyboardType: TextInputType.text,
+                  style: new TextStyle(color: Colors.black, fontSize: 20),
+                  decoration: InputDecoration(
+                      labelText: "Usuário",
+                      labelStyle: TextStyle(color: Colors.black)),
+                ),
+                Divider(),
+                TextFormField(
+                  autofocus: true,
+                  keyboardType: TextInputType.text,
+                  style: new TextStyle(color: Colors.black, fontSize: 20),
+                  decoration: InputDecoration(
+                      labelText: "Usuário",
+                      labelStyle: TextStyle(color: Colors.black)),
+                )
+              ]))),
+    );
+  }
 }
