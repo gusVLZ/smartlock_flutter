@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:smart_locker/Activities/OpenDoor.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -16,26 +16,28 @@ class _LoginState extends State<Login> {
           child: Center(
               child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  //mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
+                    Icon(Icons.account_circle, size: 100, color: Colors.teal),
+                    Divider(),
                 TextFormField(
                   autofocus: true,
                   keyboardType: TextInputType.text,
-                  style: new TextStyle(color: Colors.black, fontSize: 20),
+                  style: new TextStyle(color: Colors.black, fontSize: 14),
                   decoration: InputDecoration(
                       labelText: "Usuário",
                       labelStyle: TextStyle(color: Colors.black)),
                 ),
                 Divider(),
                 TextFormField(
-                  autofocus: true,
+                  autofocus: true, obscureText: true,
                   keyboardType: TextInputType.text,
-                  style: new TextStyle(color: Colors.black, fontSize: 20),
+                  style: new TextStyle(color: Colors.black, fontSize: 14),
                   decoration: InputDecoration(
                       labelText: "Senha",
                       labelStyle: TextStyle(color: Colors.black)),
                 ),
-                Divider(),
+                Divider(height: 50),
                 ButtonTheme(
                   height:60.0,
                   child: RaisedButton(
@@ -46,9 +48,9 @@ class _LoginState extends State<Login> {
                 },
                     child: Text(
                     "Entrar",
-                    style: TextStyle(color: Colors.black),
+                    style: TextStyle(color: Colors.white),
                   ),
-                  color: Colors.white,
+                  color: Colors.teal, shape: new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(30.0)),
                   ),
                 ),
               ]))),
