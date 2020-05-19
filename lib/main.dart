@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:smart_locker/Activities/OpenDoor.dart';
-import 'package:smart_locker/Activities/SecondScreen.dart';
+//import 'package:smart_locker/Activities/SecondScreen.dart';
 import 'package:smart_locker/widgets/login.dart';
 import 'package:smart_locker/widgets/registro.dart';
-import 'Utils/Notifications.dart';
+//import 'Utils/Notifications.dart';
 
 
 void main() => runApp(MyApp());
@@ -14,36 +14,26 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: DefaultTabController(
-        length: 3,
+        length: 2,
         child: Scaffold(
           appBar: AppBar(
             bottom: TabBar(
               tabs: [
                 Text('LOGIN'),
                 Text('REGISTRE-SE'),
-                Text('OpenDoor'),
               ],
             ),
-            title: Text('Engenharia Arcana'),
+            title: Text('SmartLock IOT'),
+            backgroundColor:  Colors.teal,
           ),
           body: Builder(builder: (context) =>TabBarView(
             children: [
               Login(),
               Registro(),
-              RaisedButton(
-                color: Colors.blue,
-                splashColor: Colors.white,
-                textColor: Colors.white,
-                onPressed: () {
-                  Navigator.push(
-                      context,MaterialPageRoute(
-                          builder: (context) => OpenDoor()));
-                },
-                child: Icon(Icons.folder_open, size: 30),
-              ),
             ],
             
           )),
+          child: SizedBox(child: Image.asset(name),)
         ),
       ),
 

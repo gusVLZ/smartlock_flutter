@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+
 class Login extends StatefulWidget {
   @override
   _LoginState createState() => _LoginState();
@@ -31,9 +32,25 @@ class _LoginState extends State<Login> {
                   keyboardType: TextInputType.text,
                   style: new TextStyle(color: Colors.black, fontSize: 20),
                   decoration: InputDecoration(
-                      labelText: "Usuário",
+                      labelText: "Senha",
                       labelStyle: TextStyle(color: Colors.black)),
-                )
+                ),
+                Divider(),
+                ButtonTheme(
+                  height:60.0,
+                  child: RaisedButton(
+                    onPressed: () {
+                  Navigator.push(
+                      context,MaterialPageRoute(
+                          builder: (context) => OpenDoor()));
+                },
+                    child: Text(
+                    "Entrar",
+                    style: TextStyle(color: Colors.black),
+                  ),
+                  color: Colors.white,
+                  ),
+                ),
               ]))),
     );
   }
