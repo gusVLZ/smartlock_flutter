@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:smart_locker/Activities/OpenDoor.dart';
+//import 'package:smart_locker/Activities/OpenDoor.dart';
 //import 'package:smart_locker/Activities/SecondScreen.dart';
 import 'package:smart_locker/widgets/login.dart';
 import 'package:smart_locker/widgets/registro.dart';
@@ -31,9 +31,7 @@ class MyApp extends StatelessWidget {
               Login(),
               Registro(),
             ],
-            
           )),
-          child: SizedBox(child: Image.asset(name),)
         ),
       ),
 

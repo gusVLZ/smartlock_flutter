@@ -46,120 +46,114 @@ class _OpenDoorState extends State<OpenDoor> {
             preferredSize: Size.fromHeight(56),
             child: Builder(
                 builder: (context) => AppBar(
-                      title: Text("Abre Porta"),
-                    ))),
+                    title: Text("Abre Porta"), backgroundColor: Colors.teal))),
         body: Builder(
             builder: (context) => SafeArea(
-                  child: Column(
-                    children: <Widget>[
-                      SizedBox(
-                         height: 40,
-                       ),
-                      Container(
-                        height: 50,
-                        margin: EdgeInsets.all(20),
-                        alignment: Alignment.centerLeft,
-                        decoration: BoxDecoration(
-                          gradient: LinearGradient(
-                            begin: Alignment.topLeft,
-                            end: Alignment.bottomRight,
-                            stops: [0.1, 1],
-                            colors: [
-                              Color(0xFF4FA800),
-                              Color(0XFF6DE800),
-                            ],
-                          ),
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(5),
-                          ),
-                        ),
-                        child: SizedBox.expand(
-                          child: FlatButton(
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: <Widget>[
-                                Text(
-                                  "Open Door",
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.white,
-                                    fontSize: 20,
-                                  ),
-                                  textAlign: TextAlign.left,
+                    child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                      Container(),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: <Widget>[
+                          Flexible(
+                            flex: 2,
+                            child: Container(
+                              height: 50,
+                              margin: EdgeInsets.all(20),
+                              alignment: Alignment.centerLeft,
+                              decoration: BoxDecoration(
+                                gradient: LinearGradient(
+                                  begin: Alignment.topCenter,
+                                  end: Alignment.bottomRight,
+                                  stops: [0.1, 1],
+                                  colors: [
+                                    Color(0xFFAB47BC),
+                                    Color(0XFF4527A0)
+                                  ],
                                 ),
-                                Container(
-                                  child: SizedBox(
-                                    // Icon(Icons.folder_open, size: 30),
-                                    child: Icon(Icons.lock_open, size: 30),
-                                  ),
-                                )
-                              ],
-                            ),
-                            onPressed: openDoorSend,
-                          ),
-                        ),
-                      ),
-                      // RaisedButton(
-                      // child: Text("Open Door"),
-                      // color: Colors.green,
-                      // onPressed: openDoorSend,
-                      // ),
-                      Container(
-                        height: 50,
-                        margin: EdgeInsets.all(20),
-                        alignment: Alignment.centerLeft,
-                        decoration: BoxDecoration(
-                          gradient: LinearGradient(
-                            begin: Alignment.topLeft,
-                            end: Alignment.bottomRight,
-                            stops: [0.1, 1],
-                            colors: [
-                              Color(0xFFCC0000),
-                              Color(0XFFFF8787),
-                            ],
-                          ),
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(5),
-                          ),
-                        ),
-                        child: SizedBox.expand(
-                          child: FlatButton(
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: <Widget>[
-                                Text(
-                                  "Close Door",
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.white,
-                                    fontSize: 20,
-                                  ),
-                                  textAlign: TextAlign.left,
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(5),
                                 ),
-                                Container(
-                                  child: SizedBox(
-                                    // Icon(Icons.folder_open, size: 30),
-                                    child: Icon(Icons.lock_outline, size: 30),
+                              ),
+                              child: SizedBox.expand(
+                                child: FlatButton(
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.center,
+                                    children: <Widget>[
+                                      Container(
+                                          child:
+                                              Center(child:Icon(Icons.lock_open, size: 30)),
+                                      )
+                                    ],
                                   ),
-                                )
-                              ],
+                                  onPressed: openDoorSend,
+                                ),
+                              ),
                             ),
-                            onPressed: closeDoorSend,
                           ),
-                        ),
+                          // RaisedButton(
+                          // child: Text("Open Door"),
+                          // color: Colors.green,
+                          // onPressed: openDoorSend,
+                          // ),
+                          Flexible(
+                            flex: 2,
+                            child: Container(
+                              height: 50,
+                              margin: EdgeInsets.all(20),
+                              alignment: Alignment.centerLeft,
+                              decoration: BoxDecoration(
+                                gradient: LinearGradient(
+                                  begin: Alignment.topLeft,
+                                  end: Alignment.bottomRight,
+                                  stops: [0.1, 1],
+                                  colors: [
+                                    Colors.orangeAccent,
+                                    Colors.deepOrange
+                                  ],
+                                ),
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(5),
+                                ),
+                              ),
+                              child: SizedBox.expand(
+                                child: FlatButton(
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.center,
+                                    children: <Widget>[
+                                      Container(
+                                        child: SizedBox(
+                                          // Icon(Icons.folder_open, size: 30),
+                                          child:
+                                              Icon(Icons.lock_outline, size: 30),
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                  onPressed: closeDoorSend,
+                                ),
+                              ),
+                            ),
+                          ),
+                          // RaisedButton(
+                          //  child: Text("Close Door"),
+                          //  color: Colors.red,
+                          //  onPressed: closeDoorSend,
+                          //),
+                        ],
                       ),
-                      // RaisedButton(
-                      //  child: Text("Close Door"),
-                      //  color: Colors.red,
-                      //  onPressed: closeDoorSend,
-                      //),
-                      Container(
-                          color: Colors.blue,
-                          width: double.infinity,
-                          margin: EdgeInsets.all(20),
-                          child: Text(_response)),
-                    ],
-                  ),
-                )));
+                      Flexible(
+                        flex: 2,
+                        fit: FlexFit.loose,
+                        child: Container(
+                            color: Colors.teal,
+                            width: double.infinity,
+                            margin: EdgeInsets.all(20), padding: EdgeInsets.all(20),
+                            child: Text(_response)),
+                      ),
+                    ]))));
   }
 }

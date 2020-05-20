@@ -33,15 +33,23 @@ class _RegistroState extends State<Registro> {
           children: <Widget>[
              TextFormField(autofocus: true,
             keyboardType: TextInputType.text,
-            style: new TextStyle(color: Colors.black, fontSize: 20),
+            style: new TextStyle(color: Colors.black, fontSize: 14),
             decoration: InputDecoration(
               labelText: "Nome",
               labelStyle: TextStyle(color: Colors.black)),
             ),
             Divider(),
+             TextFormField(
+                  autofocus: true,
+                  keyboardType: TextInputType.text,
+                  style: new TextStyle(color: Colors.black, fontSize: 14),
+                  decoration: InputDecoration(
+                      labelText: "Cargo Empresarial",
+                      labelStyle: TextStyle(color: Colors.black)),
+                ),
                 TextFormField(autofocus: true,
             keyboardType: TextInputType.emailAddress,
-            style: new TextStyle(color: Colors.black, fontSize: 20),
+            style: new TextStyle(color: Colors.black, fontSize: 14),
             decoration: InputDecoration(
               labelText: "E-mail",
               labelStyle: TextStyle(color: Colors.black)),
@@ -51,7 +59,7 @@ class _RegistroState extends State<Registro> {
                   autofocus: true,
                   obscureText: true,
             keyboardType: TextInputType.text,
-            style: new TextStyle(color: Colors.black, fontSize: 20),
+            style: new TextStyle(color: Colors.black, fontSize: 14),
             decoration: InputDecoration(
               labelText: "Senha",
               labelStyle: TextStyle(color: Colors.black)),
@@ -61,12 +69,12 @@ class _RegistroState extends State<Registro> {
                   autofocus: true,
                   obscureText: true,
             keyboardType: TextInputType.text,
-            style: new TextStyle(color: Colors.black, fontSize: 20),
+            style: new TextStyle(color: Colors.black, fontSize: 14),
             decoration: InputDecoration(
               labelText: "Senha novamente",
               labelStyle: TextStyle(color: Colors.black)),
                 ),
-                Divider(),   
+                Divider(height: 30),   
                 ButtonTheme(
                   height:60.0,
                   child: RaisedButton(
@@ -76,10 +84,12 @@ class _RegistroState extends State<Registro> {
                           builder: (context) => OpenDoor()));
                 },
                   child: Text(
-                  "Entrar",
-                  style: TextStyle(color: Colors.black),
+                  "Registrar",
+                  style: TextStyle(color: Colors.white, fontSize: 18),
                   ),
-                  color: Colors.white,
+                  color: Colors.teal,
+                  shape: new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(30.0)),
+
                   )),
           ]          
 
