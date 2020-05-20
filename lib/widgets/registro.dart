@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:smart_locker/Models/Album.dart';
+/*import 'package:smart_locker/Models/Album.dart';
 import 'package:intl/intl.dart';
 import 'package:smart_locker/Utils/Notifications.dart';
-import 'package:http/http.dart' as http;
+import 'package:http/http.dart' as http;*/
 import 'package:smart_locker/Activities/OpenDoor.dart';
 
 class Registro extends StatefulWidget {
@@ -16,7 +16,7 @@ class Form {
   String cpf = '';
   String email = '';
   String senha = '';
-  String confirm_senha = '';
+  String confirmSenha = '';
 
 }
 class _RegistroState extends State<Registro> {
