@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 //import 'package:smart_locker/Activities/SecondScreen.dart';
 import 'package:smart_locker/widgets/login.dart';
 import 'package:smart_locker/widgets/registro.dart';
+
 //import 'Utils/Notifications.dart';
 
 

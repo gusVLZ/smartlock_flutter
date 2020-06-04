@@ -12,7 +12,7 @@ class _OpenDoorState extends State<OpenDoor> {
     print("opened");
     try {
       final http.Response response =
-          await http.get('http://192.168.0.77:3000/api/opendoor');
+          await http.get('http://smartusjt.ddns.net:3000/api/opendoor/mobile');
       print(response);
       setState(() {
         _response = response.body.toString();
@@ -20,22 +20,6 @@ class _OpenDoorState extends State<OpenDoor> {
     } catch (e) {
       print(e);
     }
-    print("end");
-  }
-
-  closeDoorSend() async {
-    print("closed");
-    try {
-      final http.Response response =
-          await http.get('http://192.168.0.77:3000/api/closedoor');
-      print(response);
-      setState(() {
-        _response = response.body.toString();
-      });
-    } catch (e) {
-      print(e);
-    }
-
     print("end");
   }
 
@@ -59,36 +43,19 @@ class _OpenDoorState extends State<OpenDoor> {
                           Flexible(
                             flex: 2,
                             child: Container(
-                              height: 50,
-                              margin: EdgeInsets.all(20),
-                              alignment: Alignment.centerLeft,
-                              decoration: BoxDecoration(
-                                gradient: LinearGradient(
-                                  begin: Alignment.topCenter,
-                                  end: Alignment.bottomRight,
-                                  stops: [0.1, 1],
-                                  colors: [
-                                    Color(0xFFAB47BC),
-                                    Color(0XFF4527A0)
-                                  ],
+                              child: Ink(
+                                width: 400.0,
+                                height: 200.0,
+                                decoration: const ShapeDecoration(
+                                  color: Colors.teal,
+                                  shape: CircleBorder(),
                                 ),
-                                borderRadius: BorderRadius.all(
-                                  Radius.circular(5),
-                                ),
-                              ),
-                              child: SizedBox.expand(
-                                child: FlatButton(
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.center,
-                                    children: <Widget>[
-                                      Container(
-                                          child:
-                                              Center(child:Icon(Icons.lock_open, size: 30)),
-                                      )
-                                    ],
-                                  ),
-                                  onPressed: openDoorSend,
+                                child: IconButton(
+                                  iconSize: 144.0,
+                                  icon: Icon(Icons.lock_outline),
+                                  color: Colors.white,
+                                  onPressed:  openDoorSend,
+
                                 ),
                               ),
                             ),
@@ -98,7 +65,7 @@ class _OpenDoorState extends State<OpenDoor> {
                           // color: Colors.green,
                           // onPressed: openDoorSend,
                           // ),
-                          Flexible(
+                          /*Flexible(
                             flex: 2,
                             child: Container(
                               height: 50,
@@ -137,7 +104,7 @@ class _OpenDoorState extends State<OpenDoor> {
                                 ),
                               ),
                             ),
-                          ),
+                          ),*/
                           // RaisedButton(
                           //  child: Text("Close Door"),
                           //  color: Colors.red,
@@ -147,11 +114,11 @@ class _OpenDoorState extends State<OpenDoor> {
                       ),
                       Flexible(
                         flex: 2,
-                        fit: FlexFit.loose,
                         child: Container(
                             color: Colors.teal,
                             width: double.infinity,
-                            margin: EdgeInsets.all(20), padding: EdgeInsets.all(20),
+                            margin: EdgeInsets.all(20),
+                            padding: EdgeInsets.all(20),
                             child: Text(_response)),
                       ),
                     ]))));
