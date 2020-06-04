@@ -1,5 +1,5 @@
 import 'dart:convert';
-
+import 'package:smart_locker/global.dart' as globals;
 import 'package:flutter/material.dart';
 import 'package:smart_locker/Activities/OpenDoor.dart';
 import 'package:flutter/services.dart';
@@ -57,7 +57,8 @@ class _LoginState extends State<Login> with SingleTickerProviderStateMixin {
       Toast(_scaffoldKey.currentContext, 'Enviado com sucesso');
 
       fetchUser(userLog).then((value) {
-        if (value) {
+        if (value!="") {
+          globals.username = value;
           Navigator.push(
               context, MaterialPageRoute(builder: (context) => OpenDoor()));
         } else {
@@ -67,7 +68,7 @@ class _LoginState extends State<Login> with SingleTickerProviderStateMixin {
     }
   }
 
-  Future<bool> fetchUser(User body) async {
+  Future<String> fetchUser(User body) async {
     final response = await http.post('http://gusvlz.ddns.net:3000/api/login',
         headers: <String, String>{
           'Content-Type': 'application/json; charset=UTF-8',
@@ -77,11 +78,11 @@ class _LoginState extends State<Login> with SingleTickerProviderStateMixin {
     if (response.statusCode == 200) {
       // If the server did return a 200 OK response,
       // then parse the JSON.
-      return true;
+      return jsonDecode(response.body)["username"];
     } else {
       // If the server did not return a 200 OK response,
       // then throw an exception.
-      return false;
+      return "";
     }
   }
 

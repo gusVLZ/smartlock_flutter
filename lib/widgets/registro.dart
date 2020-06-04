@@ -1,5 +1,5 @@
 import 'dart:convert';
-
+import 'package:smart_locker/global.dart' as globals;
 import 'package:flutter/material.dart';
 import 'package:smart_locker/Activities/OpenDoor.dart';
 import 'package:flutter/services.dart';
@@ -34,7 +34,8 @@ class _RegistroState extends State<Registro> {
       Toast(_scaffoldKey.currentContext, 'Enviado com sucesso');
 
       postUser(userLog).then((value) {
-        if (value) {
+        if (value!="") {
+          globals.username = value;
           Navigator.push(
               context, MaterialPageRoute(builder: (context) => OpenDoor()));
         } else {
@@ -44,7 +45,7 @@ class _RegistroState extends State<Registro> {
     }
   }
 
-  Future<bool> postUser(User body) async {
+  Future<String> postUser(User body) async {
     final response =
         await http.post('http://gusvlz.ddns.net:3000/api/cadastrar',
             headers: <String, String>{
@@ -55,11 +56,11 @@ class _RegistroState extends State<Registro> {
     if (response.statusCode == 200) {
       // If the server did return a 200 OK response,
       // then parse the JSON.
-      return true;
+      return jsonDecode(response.body)["username"];
     } else {
       // If the server did not return a 200 OK response,
       // then throw an exception.
-      return false;
+      return "";
     }
   }
 
@@ -95,7 +96,8 @@ class _RegistroState extends State<Registro> {
                                           ? 'É necessario um Usuário'
                                           : null,
                                       onSaved: (val) => userLog.username = val,
-                                    ),Divider(),
+                                    ),
+                                    Divider(),
                                     TextFormField(
                                       keyboardType: TextInputType.text,
                                       style: new TextStyle(
@@ -108,7 +110,8 @@ class _RegistroState extends State<Registro> {
                                           ? 'É necessario uma Cargo'
                                           : null,
                                       onSaved: (val) => userLog.cargo = val,
-                                    ),Divider(),
+                                    ),
+                                    Divider(),
                                     TextFormField(
                                       keyboardType: TextInputType.text,
                                       style: new TextStyle(
@@ -147,9 +150,10 @@ class _RegistroState extends State<Registro> {
                                           labelText: "Senha novamente",
                                           labelStyle:
                                               TextStyle(color: Colors.black)),
-                                      validator: (val) => val.isEmpty && val != userLog.password
-                                          ? 'Senhas divergem'
-                                          : null,
+                                      validator: (val) =>
+                                          val.isEmpty && val != userLog.password
+                                              ? 'Senhas divergem'
+                                              : null,
                                       onSaved: (val) => userLog.password = val,
                                     ),
                                     Divider(),

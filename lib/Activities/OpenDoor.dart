@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:smart_locker/global.dart' as globals;
+
 
 class OpenDoor extends StatefulWidget {
   @override
@@ -12,7 +14,7 @@ class _OpenDoorState extends State<OpenDoor> {
     print("opened");
     try {
       final http.Response response =
-          await http.get('http://smartusjt.ddns.net:3000/api/opendoor/mobile' + 'variavelGlobalaqui');
+          await http.get('http://smartusjt.ddns.net:3000/api/opendoor/' + globals.username);
       print(response);
       setState(() {
         _response = response.body.toString();
