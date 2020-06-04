@@ -12,9 +12,32 @@ class Login extends StatefulWidget {
   _LoginState createState() => _LoginState();
 }
 
-class _LoginState extends State<Login> {
+class _LoginState extends State<Login> with SingleTickerProviderStateMixin {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
+  AnimationController controller;
+  Animation<double> animation;
+
+  @override
+  void initState() {
+    super.initState();
+
+    controller = AnimationController(
+      duration: Duration(seconds: 1),
+      vsync: this,
+    );
+
+    animation = CurvedAnimation(
+      parent: controller,
+      curve: Curves.easeInOutCubic,
+    ).drive(Tween(begin: 0, end: 2));
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
 
   var userLog = new User();
 
@@ -37,7 +60,7 @@ class _LoginState extends State<Login> {
         if (value) {
           Navigator.push(
               context, MaterialPageRoute(builder: (context) => OpenDoor()));
-        }else{
+        } else {
           Toast(_scaffoldKey.currentContext, "Credenciais Invalidas");
         }
       });
@@ -49,8 +72,7 @@ class _LoginState extends State<Login> {
         headers: <String, String>{
           'Content-Type': 'application/json; charset=UTF-8',
         },
-        body: jsonEncode(body)
-        );
+        body: jsonEncode(body));
 
     if (response.statusCode == 200) {
       // If the server did return a 200 OK response,
@@ -76,17 +98,13 @@ class _LoginState extends State<Login> {
                           child: new Form(
                               key: _formKey,
                               autovalidate: true,
-                              child: Column(
-                                  crossAxisAlignment:
-                                      CrossAxisAlignment.stretch,
+                              child: ListView(
                                   //mainAxisAlignment: MainAxisAlignment.center,
                                   children: <Widget>[
+                                    SizedBox(height: 20),
                                     Icon(Icons.account_circle,
                                         size: 100, color: Colors.teal),
-                                    Divider(),
-                                    SizedBox(
-                                      height: 50,
-                                    ),
+                                    Divider(height: 20),
                                     TextFormField(
                                       autofocus: true,
                                       keyboardType: TextInputType.text,
@@ -118,18 +136,18 @@ class _LoginState extends State<Login> {
                                       onSaved: (val) => userLog.password = val,
                                     ),
                                     Divider(height: 10),
+
                                     Container(
                                       height: 40,
-                                      margin: EdgeInsets.all(20),
-                                      alignment: Alignment.centerLeft,
+                                      margin: EdgeInsets.all(80),
                                       decoration: BoxDecoration(
                                         gradient: LinearGradient(
                                           begin: Alignment.topLeft,
                                           end: Alignment.bottomRight,
                                           stops: [0.4, 1],
                                           colors: [
-                                            Color(0XFF4DA300),
-                                            Color(0xFF62D100),
+                                            Color(0XFF2B9688),
+                                            Color(0xFF88D8AC),
                                           ],
                                         ),
                                         borderRadius: BorderRadius.all(
@@ -140,21 +158,40 @@ class _LoginState extends State<Login> {
                                         child: FlatButton(
                                           child: Row(
                                             mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
+                                                MainAxisAlignment.center,
                                             children: <Widget>[
-                                              Text("Entrar",
-                                                  style: TextStyle(
-                                                    fontWeight: FontWeight.bold,
-                                                    color: Colors.white,
-                                                    fontSize: 20,
-                                                  ),
-                                                  textAlign: TextAlign.center),
+                                              Text(
+                                                "Entrar",
+                                                style: TextStyle(
+                                                  fontWeight: FontWeight.bold,
+                                                  color: Colors.white,
+                                                  fontSize: 20,
+                                                ),
+                                                textAlign: TextAlign.center),
                                             ],
                                           ),
                                           onPressed: _submitForm,
                                         ),
                                       ),
                                     ),
+                                    GestureDetector(
+                                      onTap: () {
+                                        controller
+                                          ..reset()
+                                          ..forward();
+                                      },
+                                      child: RotationTransition(
+                                          turns: animation,
+                                          child: FlatButton(
+                                            child: Icon(
+                                              Icons.info,
+                                              size: 30,
+                                              color: Colors.teal,
+                                            ),
+                                            onPressed: () => Toast(context,
+                                                "Desenvolvido por Gabriel, Guilherme, Gustavo e Leonardo, sob supervisão de Roberto Marcos Kalili"),
+                                          )),
+                                    )
                                     // ButtonTheme(
                                     //   height: 60.0,
                                     //   child: RaisedButton(

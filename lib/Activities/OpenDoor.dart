@@ -12,7 +12,7 @@ class _OpenDoorState extends State<OpenDoor> {
     print("opened");
     try {
       final http.Response response =
-          await http.get('http://192.168.0.77:3000/api/opendoor');
+          await http.get('http://gusvlz.ddns.net:3000/api/opendoor');
       print(response);
       setState(() {
         _response = response.body.toString();
@@ -27,7 +27,7 @@ class _OpenDoorState extends State<OpenDoor> {
     print("closed");
     try {
       final http.Response response =
-          await http.get('http://192.168.0.77:3000/api/closedoor');
+          await http.get('http://gusvlz.ddns.net:3000/api/closedoor');
       print(response);
       setState(() {
         _response = response.body.toString();

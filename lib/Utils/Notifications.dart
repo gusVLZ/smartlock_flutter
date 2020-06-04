@@ -7,7 +7,7 @@ class Toast {
       SnackBar(
         content: Text(_text),
         action: SnackBarAction(
-            label: 'Hide', onPressed: scaffold.hideCurrentSnackBar),
+            label: 'Ok', onPressed: scaffold.hideCurrentSnackBar),
       ),
     );
   }
