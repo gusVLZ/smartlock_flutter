@@ -12,7 +12,7 @@ class _OpenDoorState extends State<OpenDoor> {
     print("opened");
     try {
       final http.Response response =
-          await http.get('http://smartusjt.ddns.net:3000/api/opendoor/mobile');
+          await http.get('http://smartusjt.ddns.net:3000/api/opendoor/mobile' + 'variavelGlobalaqui');
       print(response);
       setState(() {
         _response = response.body.toString();

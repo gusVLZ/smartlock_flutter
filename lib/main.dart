@@ -20,8 +20,8 @@ class MyApp extends StatelessWidget {
           appBar: AppBar(
             bottom: TabBar(
               tabs: [
-                Text('LOGIN'),
-                Text('REGISTRE-SE'),
+                Container(child:Text('LOGIN'), height: 30, alignment: Alignment.center,),
+                Container(child:Text('REGISTRE-SE'), height: 30, alignment: Alignment.center,),
               ],
             ),
             title: Text('SmartLock IOT'),
