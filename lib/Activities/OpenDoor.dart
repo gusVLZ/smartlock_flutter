@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:smart_locker/global.dart' as globals;
-
+import 'package:smart_locker/Utils/Notifications.dart';
 
 class OpenDoor extends StatefulWidget {
   @override
@@ -10,15 +10,14 @@ class OpenDoor extends StatefulWidget {
 
 class _OpenDoorState extends State<OpenDoor> {
   String _response = "";
+  final GlobalKey<ScaffoldState> _builderKey = new GlobalKey<ScaffoldState>();
   openDoorSend() async {
     print("opened");
     try {
-      final http.Response response =
-          await http.get('http://smartusjt.ddns.net:3000/api/opendoor/' + globals.username);
+      final http.Response response = await http.get(
+          'http://smartusjt.ddns.net:3000/api/opendoor/' + globals.username);
       print(response);
-      setState(() {
-        _response = response.body.toString();
-      });
+      Toast(_builderKey.currentContext, response.body.toString());
     } catch (e) {
       print(e);
     }
@@ -34,32 +33,30 @@ class _OpenDoorState extends State<OpenDoor> {
                 builder: (context) => AppBar(
                     title: Text("Abre Porta"), backgroundColor: Colors.teal))),
         body: Builder(
+            key: _builderKey,
             builder: (context) => SafeArea(
                     child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
                       Container(),
                       Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
                           Flexible(
                             flex: 2,
                             child: Container(
-                              child: Ink(
-                                width: 400.0,
-                                height: 200.0,
-                                decoration: const ShapeDecoration(
-                                  color: Colors.teal,
-                                  shape: CircleBorder(),
-                                ),
-                                child: IconButton(
-                                  iconSize: 144.0,
-                                  icon: Icon(Icons.lock_outline),
-                                  color: Colors.white,
-                                  onPressed:  openDoorSend,
-
-                                ),
+                                child: RaisedButton(
+                                  padding: EdgeInsets.all(30),
+                                  color:Colors.teal,
+                                  elevation: 10,
+                              onPressed: openDoorSend,
+                              shape: CircleBorder(),
+                              child: Icon(
+                                Icons.lock_outline,
+                                size: 144.0,
+                                color: Colors.white,
                               ),
+                            )
                             ),
                           ),
                           // RaisedButton(
@@ -113,15 +110,6 @@ class _OpenDoorState extends State<OpenDoor> {
                           //  onPressed: closeDoorSend,
                           //),
                         ],
-                      ),
-                      Flexible(
-                        flex: 2,
-                        child: Container(
-                            color: Colors.teal,
-                            width: double.infinity,
-                            margin: EdgeInsets.all(20),
-                            padding: EdgeInsets.all(20),
-                            child: Text(_response)),
                       ),
                     ]))));
   }

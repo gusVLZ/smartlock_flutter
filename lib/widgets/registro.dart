@@ -47,7 +47,7 @@ class _RegistroState extends State<Registro> {
 
   Future<String> postUser(User body) async {
     final response =
-        await http.post('http://gusvlz.ddns.net:3000/api/cadastrar',
+        await http.post('http://smartusjt.ddns.net:3000/api/cadastrar',
             headers: <String, String>{
               'Content-Type': 'application/json; charset=UTF-8',
             },

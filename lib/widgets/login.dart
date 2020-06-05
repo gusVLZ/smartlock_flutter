@@ -69,7 +69,7 @@ class _LoginState extends State<Login> with SingleTickerProviderStateMixin {
   }
 
   Future<String> fetchUser(User body) async {
-    final response = await http.post('http://gusvlz.ddns.net:3000/api/login',
+    final response = await http.post('http://smartusjt.ddns.net:3000/api/login',
         headers: <String, String>{
           'Content-Type': 'application/json; charset=UTF-8',
         },
