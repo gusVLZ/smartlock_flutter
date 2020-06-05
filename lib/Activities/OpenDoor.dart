@@ -31,7 +31,7 @@ class _OpenDoorState extends State<OpenDoor> {
             preferredSize: Size.fromHeight(56),
             child: Builder(
                 builder: (context) => AppBar(
-                    title: Text("Abree Porta"), backgroundColor: Colors.teal))),
+                    title: Text("Abre Porta"), backgroundColor: Colors.teal))),
         body: Builder(
             key: _builderKey,
             builder: (context) => SafeArea(
